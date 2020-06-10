@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use nalgebra::{VectorN, MatrixN, MatrixMN, U0, U1, U2};
+    use nalgebra::{VectorN, MatrixN, U2};
 
     use crate::filter::Filter;
 
@@ -37,7 +37,7 @@ mod tests {
         let mut measurement = VectorN::<f32, U2>::new(0.0, 9.0);
         for i in 0..100{
             measurement[0] = i as f32;
-            let(x, p) = filter.run(measurement);
+            let(x, _) = filter.run(measurement);
             println!("{}, {}", x[0], x[1])
         }
     }

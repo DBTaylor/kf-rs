@@ -7,12 +7,10 @@ where
     T: RealField,
     DimZ: Dim + DimName,
     DimX: Dim + DimName,
-    DefaultAllocator: Allocator<T, DimX, DimX>
-    + Allocator<T, DimX>
-    + Allocator<T, DimZ, DimZ>
-    + Allocator<T, DimZ, DimX>
-    + Allocator<T, DimX, DimZ>
-    + Allocator<T, DimZ>
+    DefaultAllocator: Allocator<T, DimX>
+        + Allocator<T, DimX, DimX>
+        + Allocator<T, DimZ, DimX>
+        + Allocator<T, DimZ, DimZ>
 {
     ///state estimate vector
     x: VectorN<T, DimX>,
@@ -33,12 +31,12 @@ where
     T: RealField,
     DimZ: Dim + DimName,
     DimX: Dim + DimName,
-    DefaultAllocator: Allocator<T, DimX, DimX>
-        + Allocator<T, DimX>
-        + Allocator<T, DimZ, DimZ>
-        + Allocator<T, DimZ, DimX>
-        + Allocator<T, DimX, DimZ>
+    DefaultAllocator: Allocator<T, DimX>
         + Allocator<T, DimZ>
+        + Allocator<T, DimX, DimX>
+        + Allocator<T, DimX, DimZ>
+        + Allocator<T, DimZ, DimX>
+        + Allocator<T, DimZ, DimZ>
 {
     pub fn new(x: VectorN<T, DimX>, p: MatrixN<T, DimX>, f: MatrixN<T, DimX>, r: MatrixN<T, DimZ>, h: MatrixMN<T, DimZ, DimX>, q: MatrixN<T, DimX>) ->  Filter<T, DimZ, DimX>{
         Filter{x, p, f, r, h, q}
@@ -63,14 +61,11 @@ where
     DimZ: Dim + DimName,
     DimX: Dim + DimName,
     DimU: Dim + DimName,
-    DefaultAllocator: Allocator<T, DimX, DimX>
-    + Allocator<T, DimX, DimU>
-    + Allocator<T, DimX>
-    + Allocator<T, DimZ, DimZ>
-    + Allocator<T, DimZ, DimX>
-    + Allocator<T, DimX, DimZ>
-    + Allocator<T, DimX, DimU>
-    + Allocator<T, DimZ>
+    DefaultAllocator: Allocator<T, DimX>
+        + Allocator<T, DimX, DimX>
+        + Allocator<T, DimZ, DimX>
+        + Allocator<T, DimZ, DimZ>
+        + Allocator<T, DimX, DimU>
 {
     ///state estimate vector
     x: VectorN<T, DimX>,
@@ -94,15 +89,14 @@ where
     DimZ: Dim + DimName,
     DimX: Dim + DimName,
     DimU: Dim + DimName,
-    DefaultAllocator: Allocator<T, DimX, DimX>
-        + Allocator<T, DimX, DimU>
-        + Allocator<T, DimX>
-        + Allocator<T, DimZ, DimZ>
-        + Allocator<T, DimZ, DimX>
-        + Allocator<T, DimX, DimZ>
-        + Allocator<T, DimX, DimU>
-        + Allocator<T, DimU>
+    DefaultAllocator: Allocator<T, DimX>
         + Allocator<T, DimZ>
+        + Allocator<T, DimU>
+        + Allocator<T, DimX, DimX>
+        + Allocator<T, DimX, DimZ>
+        + Allocator<T, DimZ, DimX>
+        + Allocator<T, DimZ, DimZ>
+        + Allocator<T, DimX, DimU>
 {
     pub fn new(x: VectorN<T, DimX>, p: MatrixN<T, DimX>, f: MatrixN<T, DimX>, b: MatrixMN<T, DimX, DimU>, r: MatrixN<T, DimZ>, h: MatrixMN<T, DimZ, DimX>, q: MatrixN<T, DimX>) ->  Filter2<T, DimZ, DimX, DimU>{
         Filter2{x, p, f, b, r, h, q}

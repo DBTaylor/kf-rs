@@ -1,2 +1,4 @@
 mod tests;
-pub mod filter;
+mod filter;
+
+pub use filter::{Filter, Filter2};

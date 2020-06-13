@@ -37,7 +37,7 @@ mod tests {
         let mut measurement = VectorN::<f32, U2>::new(0.0, 9.0);
         for i in 0..100 {
             measurement[0] = i as f32;
-            let (x, _) = filter.run(measurement).unwrap();
+            let (x, _, _, _, _) = filter.run(measurement).unwrap();
             println!("{}, {}", x[0], x[1])
         }
     }
